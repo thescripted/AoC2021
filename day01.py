@@ -1,7 +1,5 @@
-# open the 01_input.txt file and read the content
 with open('01_input.txt') as f:
     content = [int(i.rstrip()) for i in f.readlines()]
-
 
 # Part 1
 count = 0
