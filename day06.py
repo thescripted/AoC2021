@@ -1,3 +1,5 @@
+from collections import deque
+
 with open('input.txt') as f:
     fishes = [int(i) for i in f.readline().split(',')]
 
@@ -34,3 +36,18 @@ for fish in fishes:
     total_fishes += get_fishes(0, fish, mapper)
 
 print(total_fishes)
+
+# Part 2 (w/o Recursion)
+
+with open('input.txt') as f:
+    fishes = [int(i) for i in f.readline().split(',')]
+
+fishpool = deque([0 for _ in range(9)])
+for fish in fishes:
+    fishpool[fish] += 1
+
+for _ in range(256):
+    fishpool.rotate(-1)
+    fishpool[6] += fishpool[8]
+
+print(sum(fishpool))
